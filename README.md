@@ -12,22 +12,24 @@
 # Identifying IRE1 imprint on TNBC metabolic landscape
 
 We utilize a selective IRE1 inhibitor (MKC8866) to “switch off” IRE1 signalling, and compare changes at transcriptome/ miRNA / metabolome level upon switching on/off IRE1.
-
 ![Slide2](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide2.JPG)
 
 # Schematic workflow
-
 ![Slide3](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide3.JPG)
 
 # PCA: Exploring dataset
-
 ![Slide4](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide4.JPG)
+
+Biological groups show decent separation. Repeats 4&5 only metabolomic data
+
 
 # OPLS-DA: Identifying sources of variation between DMSO - MKC
 
 ![Slide5](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide5.JPG)
 
 ![Slide6](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide6.JPG)
+First principal component t[1] vs first orthogonal component to[1]
+Y-axis shows the within group variation, and X-axis shows the between group variation (DMSO vs MKC)
 
 ![Slide7](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide7.JPG)
 
