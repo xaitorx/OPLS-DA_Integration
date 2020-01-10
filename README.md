@@ -59,6 +59,6 @@ Pathway information is inherently redundant, as genes often participate in multi
 cutoff: 0.1 FDR
 ![Slide15](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide15.JPG)
 
-*Post-analysis – Overlapping signatures*
+*Post-analysis – Overlapping signatures*: 
 Add more gene sets to an existing network. This is done by calculating the overlap between gene sets of the current network and other signature gene set files, spotting significantly overlapping signatures. Help give biological context.
 ![Slide16](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide16.JPG)
