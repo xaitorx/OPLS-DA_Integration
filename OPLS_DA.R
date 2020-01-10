@@ -6,8 +6,7 @@ library(plyr)
 library(fgsea)
 
 # load omics data
-mfa_data <- read.csv("~/GitHub/MFA_Omics_Integration/data/mfa_data_NEW.csv", row.names = 1)
-mfa_data <- read.csv("C:/Users/Aitor/Documents/DIABLO/mfa_data_NEW.csv", row.names = 1)
+mfa_data <- read.csv("~/GitHub/OPLS-DA_Integration/data/mfa_data_NEW.csv", row.names = 1)
 
 ### PCA
 data.pca <- opls(mfa_data, predI=10)
@@ -31,7 +30,7 @@ plot(data.pca,
 
 ### OPLS-DA
 classes <- c(rep("DMSO", 5), rep("MKC", 5))
-data.oplsda.pareto2 <- opls(mfa_data, classes,
+data.oplsda.pareto <- opls(mfa_data, classes,
                         predI = 1, orthoI = 1, scaleC="pareto")
 
 scores_OPLS <- as.data.frame(cbind(data.oplsda.pareto@orthoScoreMN,data.oplsda.pareto@scoreMN)) 
@@ -55,18 +54,18 @@ loadings_OPLS_pareto <- as.data.frame(cbind(loadings.x = data.oplsda.pareto@load
 colnames(loadings_OPLS_pareto) <- c("loadings.x", "weight.x", "importance.x", "loadings.y", "weight.y", "importance.y")
 
 # annotate loadings
-annotacion_todo <- read.csv(text = getURL("https://raw.githubusercontent.com/xaitorx/MFA_Omics_Integration/v1/data/var_dim2_annot.csv"))
+annotacion_todo <- read.csv(text = getURL("https://raw.githubusercontent.com/xaitorx/OPLS-DA_Integration/data/var_dim2_annot.csv"))
 annotacion_todo <- annotacion_todo[,c(1,2,6,7)]
 annotacion_todo$X <- gsub("-", ".", annotacion_todo$X)
 
 loadings_OPLS_annot <- cbind(annotacion_todo[match(row.names(loadings_OPLS_pareto), annotacion_todo$X),], loadings_OPLS_pareto)
 
-# compare with FC MKC/DMSO
+#write file
+write.csv(loadings_OPLS_annot, "loadings_OPLS_annot.csv", row.names = FALSE)
+
+# compare with Foldhanges MKC/DMSO
 FoldChanges <-  colMeans(mfa_data[6:10,], na.rm = T) - colMeans(mfa_data[1:5,], na.rm = T)
 loadings_OPLS_annot$FoldChanges <- FoldChanges
-
-# write file
-write.csv(loadings_OPLS_annot, "loadings_OPLS_annot.csv", row.names = FALSE)
 
 # compare loadings.x with FC DMSO/MKC
 ppp <- ggplot(loadings_OPLS_annot, aes(loadings_OPLS_annot$loadings.x, loadings_OPLS_annot$FoldChanges)) 
@@ -136,7 +135,7 @@ grafico + geom_segment(aes(colour= metabolome_comp1$type[1:20], x=Y, xend=Y, y=0
 
 ### data frame with ENSEMBL/CHEBI/miRNA identifiers annotated to reactome pathways
 ### split into 1 list of IDs/pathway
-Reactome_all <- read.csv(text = getURL("https://raw.githubusercontent.com/xaitorx/MFA_Omics_Integration/v1/data/Reactome_all.csv"), stringsAsFactors=FALSE)
+Reactome_all <- read.csv(text = getURL("https://raw.githubusercontent.com/xaitorx/OPLS-DA_Integration/data/Reactome_all.csv"), stringsAsFactors=FALSE)
 Reactome_all <- Reactome_all[order(Reactome_all$pathway),]
 
 Reactome_all <- unique(Reactome_all)
@@ -154,7 +153,7 @@ names(lista1) <- unique(counts$Var1)
 # save for later
 anotacion <- as.data.frame(unique(Reactome_all[,2:3]))
 
-# save list of lists used in fgsea in .gmt format
+# save list of lists used in fgsea in .gmt format (for Cytoscape)
 ooo <- plyr::ldply(lista1, rbind)
 reactome_gmt <- cbind(anotacion, ooo)
 reactome_gmt <- reactome_gmt[,-3]
@@ -185,27 +184,15 @@ fgseaRes <- fgsea(pathways = lista1,
 
 
 fgseaRes_annot <- merge(anotacion, fgseaRes, by.x = 1, by.y = 1)
+
+#save results
 write.csv(fgseaRes_annot[,-9], "fgseaRes_annot.csv")
 
-# format for EnrichmentMap
-fgseaRes_annot_neg <- subset(fgseaRes_annot, fgseaRes_annot$NES < 0)
-fgseaRes_annot_neg <- fgseaRes_annot_neg[,c(2,2,1,8,5,6,3,4,4,7,7)]
-colnames(fgseaRes_annot_neg) <- c("NAME",	"GS<br> follow link to MSigDB",	"GS DETAILS",	"SIZE",	"ES",	"NES",	"NOM p-val",	"FDR q-val",	"FWER p-val",	"RANK AT MAX",	"LEADING EDGE")
-
-fgseaRes_annot_pos <- subset(fgseaRes_annot, fgseaRes_annot$NES > 0)
-fgseaRes_annot_pos <- fgseaRes_annot_pos[,c(2,2,1,8,5,6,3,4,4,7,7)]
-colnames(fgseaRes_annot_pos) <- c("NAME",	"GS<br> follow link to MSigDB",	"GS DETAILS",	"SIZE",	"ES",	"NES",	"NOM p-val",	"FDR q-val",	"FWER p-val",	"RANK AT MAX",	"LEADING EDGE")
-
-write.csv(fgseaRes_annot_neg, "fgseaRes_annot_neg.csv", row.names = FALSE)
-write.csv(fgseaRes_annot_pos, "fgseaRes_annot_pos.csv", row.names = FALSE)
-
-
-
-### plot
+### plot desired term gsea
 plotEnrichment(lista1[[(fgseaRes[447,])$pathway]],ranking_ooo) +
   ggtitle("XBP1(S) activates chaperone genes") 
-# change for number of row
 
+# change for number of row
 ### plot
 plotEnrichment(lista1[[(fgseaRes[59,])$pathway]],ranking_ooo) +
   ggtitle("Metabolism of proteins") 
