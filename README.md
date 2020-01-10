@@ -15,7 +15,7 @@ We utilize a selective IRE1 inhibitor (MKC8866) to “switch off” IRE1 signall
 
 ![Test Image 1](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/test1.jpg)
 
-![Test Image](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide3.jpg)
+![Slide3](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide3.jpg)
 
 ![Test Image](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide4.jpg)
 
