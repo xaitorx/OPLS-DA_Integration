@@ -56,6 +56,7 @@ Why top of ranking is more heterogeneous?
 # Summarization of top enriched terms - REACTOME
 Pathway information is inherently redundant, as genes often participate in multiple pathways, and databases may organize pathways hierarchically by including general and specific pathways with many shared genes. Consequently, pathway enrichment analysis often highlights several versions of the same pathway. Collapsing redundant pathways into a single biological theme simplifies interpretation.
 
+cutoff: 0.1 FDR
 ![Slide15](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide15.JPG)
 
 *Post-analysis – Overlapping signatures*
