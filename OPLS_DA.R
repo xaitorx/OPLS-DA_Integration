@@ -6,7 +6,8 @@ library(plyr)
 library(fgsea)
 
 # load omics data
-mfa_data <- read.csv("~/GitHub/OPLS-DA_Integration/data/mfa_data_NEW.csv", row.names = 1)
+mfa_data <- read.csv(text = getURL("https://raw.githubusercontent.com/xaitorx/OPLS-DA_Integration/master/data/mfa_data_NEW.csv"), row.names = 1)
+
 
 ### PCA
 data.pca <- opls(mfa_data, predI=10)
@@ -54,7 +55,7 @@ loadings_OPLS_pareto <- as.data.frame(cbind(loadings.x = data.oplsda.pareto@load
 colnames(loadings_OPLS_pareto) <- c("loadings.x", "weight.x", "importance.x", "loadings.y", "weight.y", "importance.y")
 
 # annotate loadings
-annotacion_todo <- read.csv(text = getURL("https://raw.githubusercontent.com/xaitorx/OPLS-DA_Integration/data/var_dim2_annot.csv"))
+annotacion_todo <- read.csv(text = getURL("https://raw.githubusercontent.com/xaitorx/OPLS-DA_Integration/master/data/var_dim2_annot.csv"))
 annotacion_todo <- annotacion_todo[,c(1,2,6,7)]
 annotacion_todo$X <- gsub("-", ".", annotacion_todo$X)
 
@@ -135,7 +136,7 @@ grafico + geom_segment(aes(colour= metabolome_comp1$type[1:20], x=Y, xend=Y, y=0
 
 ### data frame with ENSEMBL/CHEBI/miRNA identifiers annotated to reactome pathways
 ### split into 1 list of IDs/pathway
-Reactome_all <- read.csv(text = getURL("https://raw.githubusercontent.com/xaitorx/OPLS-DA_Integration/data/Reactome_all.csv"), stringsAsFactors=FALSE)
+Reactome_all <- read.csv(text = getURL("https://raw.githubusercontent.com/xaitorx/OPLS-DA_Integration/master/data/Reactome_all.csv"), stringsAsFactors=FALSE)
 Reactome_all <- Reactome_all[order(Reactome_all$pathway),]
 
 Reactome_all <- unique(Reactome_all)

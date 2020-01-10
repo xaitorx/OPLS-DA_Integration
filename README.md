@@ -13,5 +13,4 @@
 
 We utilize a selective IRE1 inhibitor (MKC8866) to “switch off” IRE1 signalling, and compare changes at transcriptome/ miRNA / metabolome level upon switching on/off IRE1.
 
-![Test Image 1](https://raw.githubusercontent.com/xaitorx/OPLS-DA_Integration/pics/test1.jpg)
-
+![Test Image 1](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/test1.jpg)
