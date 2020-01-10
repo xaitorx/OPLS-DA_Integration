@@ -27,46 +27,37 @@ We utilize a selective IRE1 inhibitor (MKC8866) to “switch off” IRE1 signall
 
 ![Slide5](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide5.JPG)
 
-# OPLS-DA: Identifying sources of variation between DMSO - MKC
-
 ![Slide6](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide6.JPG)
-
-# OPLS-DA: Identifying sources of variation between DMSO - MKC
 
 ![Slide7](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide7.JPG)
 
-# OPLS-DA: Identifying sources of variation between DMSO - MKC
+# Rank all variables according to loading scores in component 1
 
 ![Slide8](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide8.JPG)
 
-# OPLS-DA: Identifying sources of variation between DMSO - MKC
-
 ![Slide9](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide9.JPG)
-
-# OPLS-DA: Identifying sources of variation between DMSO - MKC
 
 ![Slide10](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide10.JPG)
 
-# OPLS-DA: Identifying sources of variation between DMSO - MKC
-
 ![Slide11](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide11.JPG)
 
-# OPLS-DA: Identifying sources of variation between DMSO - MKC
+# Pathway enrichment – top enriched terms - REACTOME
+Including all gene, miRNA, chemical compounds annotated to REACTOME pathways. On the preranked variables.
 
 ![Slide12](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide12.JPG)
 
-# OPLS-DA: Identifying sources of variation between DMSO - MKC
-
 ![Slide13](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide13.JPG)
 
-# OPLS-DA: Identifying sources of variation between DMSO - MKC
-
 ![Slide14](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide14.JPG)
+Plenty of terms enriched at the bottom of the ranking (DMSO phenotype), but few at the top (MKC phenotype)
+Explanation? Why top of ranking is more heterogeneous?
 
-# OPLS-DA: Identifying sources of variation between DMSO - MKC
+
+# Summarization of top enriched terms - REACTOME
+Pathway information is inherently redundant, as genes often participate in multiple pathways, and databases may organize pathways hierarchically by including general and specific pathways with many shared genes. Consequently, pathway enrichment analysis often highlights several versions of the same pathway. Collapsing redundant pathways into a single biological theme simplifies interpretation.
 
 ![Slide15](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide15.JPG)
 
-# OPLS-DA: Identifying sources of variation between DMSO - MKC
-
+*Post-analysis – Overlapping signatures*
+Add more gene sets to an existing network. This is done by calculating the overlap between gene sets of the current network and other signature gene set files, spotting significantly overlapping signatures. Help give biological context.
 ![Slide16](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide16.JPG)
