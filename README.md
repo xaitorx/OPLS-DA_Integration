@@ -49,7 +49,8 @@ Including all gene, miRNA, chemical compounds annotated to REACTOME pathways. On
 
 ![Slide14](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide14.JPG)
 Plenty of terms enriched at the bottom of the ranking (DMSO phenotype), but few at the top (MKC phenotype)
-Explanation? Why top of ranking is more heterogeneous?
+Explanation? 
+Why top of ranking is more heterogeneous?
 
 
 # Summarization of top enriched terms - REACTOME
