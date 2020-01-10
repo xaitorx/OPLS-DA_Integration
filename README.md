@@ -19,9 +19,7 @@ We utilize a selective IRE1 inhibitor (MKC8866) to “switch off” IRE1 signall
 
 # PCA: Exploring dataset
 ![Slide4](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide4.JPG)
-
 Biological groups show decent separation. Repeats 4&5 only metabolomic data
-
 
 # OPLS-DA: Identifying sources of variation between DMSO - MKC
 
@@ -45,7 +43,6 @@ Y-axis shows the within group variation, and X-axis shows the between group vari
 
 # Pathway enrichment – top enriched terms - REACTOME
 Including all gene, miRNA, chemical compounds annotated to REACTOME pathways. On the preranked variables.
-
 ![Slide12](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide12.JPG)
 
 ![Slide13](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide13.JPG)
