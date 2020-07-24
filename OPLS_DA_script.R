@@ -162,7 +162,6 @@ reactome_gmt <- reactome_gmt[,-3]
 reactome_gmt_unique = reactome_gmt[!duplicated(reactome_gmt$name),]
 write.csv(reactome_gmt_unique, file = "reactome_gmt_unique.csv", row.names=FALSE)
 
-
 write.table(reactome_gmt, file = "reactome.gmt", row.names=FALSE, col.names = FALSE, sep="\t")
 
 ### Perform GSEA with these lists on our preranked list of IDs
@@ -198,7 +197,17 @@ plotEnrichment(lista1[[(fgseaRes[447,])$pathway]],ranking_ooo) +
 plotEnrichment(lista1[[(fgseaRes[59,])$pathway]],ranking_ooo) +
   ggtitle("Metabolism of proteins") 
 
+### DOTPLOT 
+plottingo <- subset(fgseaRes_annot, fgseaRes_annot$padj < 0.1)
+plottingo$probando <- -log10(plottingo$padj)
+plottingo <- plottingo[order(plottingo$probando, decreasing = FALSE),]
+plottingo$NES <- plottingo$NES*(-1)
+plottingo$name <- factor(plottingo$name ,levels = unique(plottingo$name))
 
-
-
-https://www.bioconductor.org/packages/devel/bioc/vignettes/ropls/inst/doc/ropls-vignette.html#the-ropls-package
+grafico <- ggplot(plottingo, aes(y=name, x=probando, color=NES, size=size))
+grafico + geom_point( alpha = 0.8) +
+  scale_size( range = c(4,12)) + 
+  scale_color_gradient(low = "yellow",  high = "red3", space = "Lab", limit = c(1, 2), na.value = "red3") +
+  geom_vline(xintercept=1, linetype="dashed", color = "red", size=1) +
+  labs (title= "REACTOME pathway enrichment analysis",y = "", x = "-log10(p.adj") +
+  theme(text = element_text(size=16))
