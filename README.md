@@ -45,6 +45,8 @@ Y-axis shows the within group variation, and X-axis shows the between group vari
 Including all gene, miRNA, chemical compounds annotated to REACTOME pathways. On the preranked variables.
 ![Slide12](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide12.JPG)
 
+![enrichmentplot](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/enrichment_plot.JPG)
+
 ![Slide13](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide13.JPG)
 
 ![Slide14](https://github.com/xaitorx/OPLS-DA_Integration/blob/master/pics/Slide14.JPG)
